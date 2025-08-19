@@ -9,10 +9,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
+
 public class StreamingService {
 
     private final StreamingRepository streamingRepository;
+
+    public StreamingService(StreamingRepository streamingRepository) {
+        this.streamingRepository = streamingRepository;
+    }
 
     public List<Streaming> findAll() {
         return streamingRepository.findAll();
