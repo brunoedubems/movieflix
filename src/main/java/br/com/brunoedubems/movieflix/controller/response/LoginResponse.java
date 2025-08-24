@@ -1,4 +1,4 @@
 package br.com.brunoedubems.movieflix.controller.response;
 
-public record LoginResponse() {
+public record LoginResponse(String token) {
 }

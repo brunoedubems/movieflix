@@ -1,4 +1,7 @@
 package br.com.brunoedubems.movieflix.config;
 
-public record JWTUserData() {
+import lombok.Builder;
+
+@Builder
+public record JWTUserData(Long id, String name, String email) {
 }

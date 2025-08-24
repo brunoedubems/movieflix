@@ -1,4 +1,3 @@
 package br.com.brunoedubems.movieflix.controller.request;
 
-public class LoginRequest {
-}
+public record LoginRequest(String email, String password){}
