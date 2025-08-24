@@ -23,6 +23,15 @@ public class SecurityConfig {
 
     private final SecurityFilter securityFilter;
 
+    private static final String[] SWAGGER_WHITELIST = {
+            "/swagger-ui.html",
+            "/swagger-ui/**",
+            "/v3/api-docs/**",
+            "/api/api-docs/**", // O seu path customizado
+            "/swagger-resources/**"
+    };
+
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
@@ -31,6 +40,7 @@ public class SecurityConfig {
              .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
              .authorizeHttpRequests(authorize -> authorize
                      .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
+                     .requestMatchers(SWAGGER_WHITELIST).permitAll()
                      .requestMatchers(HttpMethod.POST,"/movieflix/auth/register").permitAll()
                      .requestMatchers(HttpMethod.POST,"/movieflix/auth/login").permitAll()
                  .anyRequest().authenticated()
